@@ -1,4 +1,5 @@
 using Undercooked.Model;
+using Undercooked.UI;
 using UnityEngine;
 
 namespace Undercooked.Appliances

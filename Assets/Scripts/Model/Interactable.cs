@@ -92,6 +92,7 @@ namespace Undercooked.Model
         {
             ChangePropertyBlock(false);
             var interactable = CurrentPickable as Interactable;
+            Debug.Log("toggle highlight on");
             interactable?.ToggleHighlightOff();
         }
 

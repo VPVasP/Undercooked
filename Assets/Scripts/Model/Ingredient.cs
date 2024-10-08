@@ -1,3 +1,4 @@
+using TMPro;
 using Undercooked.Data;
 using UnityEngine;
 
@@ -45,7 +46,6 @@ namespace Undercooked.Model
             Status = IngredientStatus.Raw;
             _meshFilter.mesh = data.rawMesh;
             _meshRenderer.material = data.ingredientMaterial;
-
             if (startingStatus == IngredientStatus.Processed)
             {
                 ChangeToProcessed();

@@ -130,6 +130,10 @@ namespace Undercooked.Appliances
             CurrentPickable.gameObject.transform.SetParent(Slot);
             CurrentPickable.gameObject.transform.SetPositionAndRotation(Slot.position, Quaternion.identity);
             knife.gameObject.SetActive(false);
+
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().isActive = true;
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press F to Chop");
+            Debug.Log("Dropped " + CurrentPickable.gameObject.name);
             return true;
         }
     }

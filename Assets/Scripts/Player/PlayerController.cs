@@ -1,5 +1,6 @@
 using System.Collections;
 using Lean.Transition;
+using TMPro;
 using Undercooked.Appliances;
 using Undercooked.Model;
 using Undercooked.UI;
@@ -212,6 +213,7 @@ namespace Undercooked.Player
 
                 // Interactable only (not a IPickable)
                 _currentPickable = interactable?.TryToPickUpFromSlot(_currentPickable);
+                _currentPickable.gameObject.GetComponent<IngredientUI>().isActive = false;
                 if (_currentPickable != null)
                 {
                     animator.SetBool(_hasPickupHash, true);

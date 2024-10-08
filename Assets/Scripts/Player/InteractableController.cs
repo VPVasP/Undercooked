@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Undercooked.Appliances;
 using Undercooked.Model;
 using UnityEngine;
 
@@ -35,6 +36,15 @@ namespace Undercooked.Player
                 return;
             }
             _interactables.Add(interactable);
+
+            if (interactable.GetComponent<CrateUI>() != null)
+            {
+                interactable.GetComponent<CrateUI>().isTextActiveBool = true;
+            }
+            else
+            {
+                Debug.Log("No need to do anything since component is not attrached");
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -43,6 +53,14 @@ namespace Undercooked.Player
             if (interactable)
             {
                 _interactables.Remove(interactable);
+            }
+            if (interactable.GetComponent<CrateUI>() != null)
+            {
+                interactable.GetComponent<CrateUI>().isTextActiveBool = false;
+            }
+            else
+            {
+                Debug.Log("No need to do anything since component is not attrached");
             }
         }
         
@@ -64,6 +82,8 @@ namespace Undercooked.Player
 
             // togglesOn only when there is a interactable near
             closest?.ToggleHighlightOn();
+
+            Debug.Log("closest stuff");
         }
         
         /// <summary>
@@ -80,7 +100,6 @@ namespace Undercooked.Player
                 minDistance = distance;
                 closest = interactable;
             }
-            
             return closest;
         }
     }
