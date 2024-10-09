@@ -31,7 +31,7 @@ namespace Undercooked.Appliances
         {
             if (CurrentPickable != null) return false;
             crateUI.SetUITextMessage("Press Space to Pickup");
-            crateUI.isTextActiveBool = true;
+            crateUI.isActive = true;
             CurrentPickable = pickableToDrop;
             CurrentPickable.gameObject.transform.SetParent(Slot);
             pickableToDrop.gameObject.transform.SetPositionAndRotation(Slot.position, Quaternion.identity);
@@ -46,7 +46,7 @@ namespace Undercooked.Appliances
                 return Instantiate(ingredientPrefab, Slot.transform.position, Quaternion.identity);
             }
             crateUI.SetUITextMessage("Drop by pressing Space");
-            crateUI.isTextActiveBool = true;
+            crateUI.isActive = true;
             var output = CurrentPickable;
             var interactable = CurrentPickable as Interactable;
             interactable?.ToggleHighlightOff();

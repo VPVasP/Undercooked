@@ -214,6 +214,7 @@ namespace Undercooked.Player
                 // Interactable only (not a IPickable)
                 _currentPickable = interactable?.TryToPickUpFromSlot(_currentPickable);
                 _currentPickable.gameObject.GetComponent<IngredientUI>().isActive = false;
+                _currentPickable.gameObject.GetComponent<IngredientUI>().DisableControllerImage();
                 if (_currentPickable != null)
                 {
                     animator.SetBool(_hasPickupHash, true);

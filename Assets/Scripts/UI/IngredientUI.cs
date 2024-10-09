@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Undercooked
 {
@@ -9,13 +12,17 @@ namespace Undercooked
     {
         public TextMeshProUGUI uiText;
         public bool isActive = false;
+        public bool isControllerPluggedIn = false;
         private Canvas canvas;
         private Transform mainCamTransform;
+        public Image controllerInputImage;
+        public Sprite[] controllerSprites;
         // Start is called before the first frame update
         void Start()
         {
             uiText = GetComponentInChildren<TextMeshProUGUI>();
             canvas = GetComponentInChildren<Canvas>();
+            controllerInputImage = GetComponentInChildren<Image>();
             mainCamTransform = Camera.main.transform;
         }
 
@@ -23,27 +30,49 @@ namespace Undercooked
         {
             uiText.text = msg;
         }
+
         private void Update()
         {
-            UIActivity();
             UIFaceCamera();
+            CheckForControllerInput();
         }
-        private void UIFaceCamera() {
-
-            canvas.transform.LookAt(transform.position + mainCamTransform.rotation * Vector3.forward, mainCamTransform.rotation * Vector3.up);
-          
-        }
-        public bool UIActivity()
+        private bool CheckForControllerInput()
         {
-            if (isActive)
+            if (Gamepad.current != null)
             {
-                uiText.gameObject.SetActive(true);
+                isControllerPluggedIn = true;
+            }
+            if (isControllerPluggedIn)
+            {
+                isActive = false;
+                controllerInputImage.enabled = true;
+                uiText.gameObject.SetActive(false);
             }
             else
             {
-                uiText.gameObject.SetActive(false);
+                isActive = true;
+                controllerInputImage.gameObject.SetActive(false);
+                uiText.gameObject.SetActive(true);
             }
-            return isActive;
+
+            return isControllerPluggedIn;
+        }
+        public void SetControllerImageInput(Sprite imageSprite)
+        {
+            controllerInputImage.sprite = imageSprite;
+        }
+        private void UIFaceCamera()
+        {
+            canvas.transform.LookAt(transform.position + mainCamTransform.rotation * Vector3.forward, mainCamTransform.rotation * Vector3.up);
+        }
+        public void DisableControllerImage()
+        {
+            controllerInputImage.gameObject.SetActive(false);
+        }
+        public void EnableControllerImage()
+        {
+            controllerInputImage.gameObject.SetActive(true);
         }
     }
+
 }

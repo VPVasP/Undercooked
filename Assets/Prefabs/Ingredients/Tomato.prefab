@@ -165,6 +165,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiText: {fileID: 2993879731573529021}
   isActive: 0
+  isControllerPluggedIn: 0
+  controllerSprites:
+  - {fileID: 21300006, guid: bff7b5b6060d17948b50442091e1f004, type: 3}
+  - {fileID: 21300010, guid: bff7b5b6060d17948b50442091e1f004, type: 3}
+  - {fileID: 21300014, guid: bff7b5b6060d17948b50442091e1f004, type: 3}
+  - {fileID: 21300002, guid: bff7b5b6060d17948b50442091e1f004, type: 3}
 --- !u!1001 &6352006516816528599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3DCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5028513129727225211, guid: 5446bb46692f66b499a65590e73532f0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: bff7b5b6060d17948b50442091e1f004, type: 3}
     - target: {fileID: 6175745328600463919, guid: 5446bb46692f66b499a65590e73532f0, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

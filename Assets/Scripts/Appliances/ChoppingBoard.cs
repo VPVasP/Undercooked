@@ -132,7 +132,9 @@ namespace Undercooked.Appliances
             knife.gameObject.SetActive(false);
 
             CurrentPickable.gameObject.GetComponent<IngredientUI>().isActive = true;
-            CurrentPickable.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press F to Chop");
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press B to Chop");
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().EnableControllerImage();
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().SetControllerImageInput(CurrentPickable.gameObject.GetComponent<IngredientUI>().controllerSprites[3]);
             Debug.Log("Dropped " + CurrentPickable.gameObject.name);
             return true;
         }

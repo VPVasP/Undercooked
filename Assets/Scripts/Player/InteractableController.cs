@@ -39,9 +39,8 @@ namespace Undercooked.Player
 
             if (interactable.GetComponent<CrateUI>() != null)
             {
-                interactable.GetComponent<CrateUI>().isTextActiveBool = true;
-            }
-            else
+                interactable.GetComponent<CrateUI>().isActive = true;
+            }            else
             {
                 Debug.Log("No need to do anything since component is not attrached");
             }
@@ -56,7 +55,8 @@ namespace Undercooked.Player
             }
             if (interactable.GetComponent<CrateUI>() != null)
             {
-                interactable.GetComponent<CrateUI>().isTextActiveBool = false;
+                interactable.GetComponent<CrateUI>().isActive = false;
+                interactable.GetComponent<CrateUI>().DisableControllerImage();
             }
             else
             {
