@@ -27,6 +27,7 @@ namespace Undercooked.Appliances
             var interactable = CurrentPickable as Interactable;
             interactable?.ToggleHighlightOff();
             CurrentPickable = null;
+            output.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press Spacebar to Drop");
             return output;
         }
 
@@ -37,6 +38,7 @@ namespace Undercooked.Appliances
             CurrentPickable = pickable;
             CurrentPickable.gameObject.transform.SetParent(Slot);
             CurrentPickable.gameObject.transform.SetPositionAndRotation(Slot.position, Quaternion.identity);
+            CurrentPickable.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press Spacebar to pick up");
             return true;
         }
     }

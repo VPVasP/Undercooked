@@ -45,13 +45,13 @@ namespace Undercooked.Appliances
                 _animator.SetTrigger(OpenHash);
                 return Instantiate(ingredientPrefab, Slot.transform.position, Quaternion.identity);
             }
-            crateUI.SetUITextMessage("Drop by pressing Space");
-            crateUI.isActive = true;
             var output = CurrentPickable;
             var interactable = CurrentPickable as Interactable;
             interactable?.ToggleHighlightOff();
             Debug.Log("log log");
             CurrentPickable = null;
+            output.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press Spacebar to Drop");
+            output.gameObject.GetComponent<IngredientUI>().isActive = true;
             return output;
         }
     }

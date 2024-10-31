@@ -115,6 +115,7 @@ namespace Undercooked.Appliances
             interactable?.ToggleHighlightOff();
             CurrentPickable = null;
             knife.gameObject.SetActive(true);
+            output.gameObject.GetComponent<IngredientUI>().SetPickUpUI("Press Spacebar to Drop");
             return output;
         }
         

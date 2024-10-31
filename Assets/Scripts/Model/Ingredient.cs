@@ -14,7 +14,7 @@ namespace Undercooked.Model
         private Collider _collider;
         private MeshRenderer _meshRenderer;
         private MeshFilter _meshFilter;
-
+        private IngredientUI ingredientUI;
         public IngredientStatus Status { get; private set; }
         public IngredientType Type => data.type;
         public Color BaseColor => data.baseColor;
@@ -33,6 +33,7 @@ namespace Undercooked.Model
             _meshFilter = GetComponent<MeshFilter>();
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
+            ingredientUI = GetComponent<IngredientUI>();
             Setup();
         }
 
@@ -56,6 +57,9 @@ namespace Undercooked.Model
         {
             _rigidbody.isKinematic = true;
             _collider.enabled = false;
+            ingredientUI.SetPickUpUI("Press Spacebar to drop");
+            ingredientUI.SetControllerImageInput(ingredientUI.controllerSprites[0]);
+            Debug.Log("Picked up");
         }
         
         public void Drop()
@@ -63,12 +67,15 @@ namespace Undercooked.Model
             gameObject.transform.SetParent(null);
             _rigidbody.isKinematic = false;
             _collider.enabled = true;
+            ingredientUI.SetPickUpUI("Press Pick up");
         }
         
         public void ChangeToProcessed()
         {
             Status = IngredientStatus.Processed;
             _meshFilter.mesh = data.processedMesh;
+            ingredientUI.SetPickUpUI("Press Spacebar to pick up");
+            Debug.Log("Proccesed Mat");
         }
 
         public void ChangeToCooked()
